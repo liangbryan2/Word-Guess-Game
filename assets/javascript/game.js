@@ -1,19 +1,45 @@
-var words = ["hangman", "guessing", "game", "apples", "bananas", "fruit"];
+var words = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard",
+    "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle",
+    "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate",
+    "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash",
+    "nidoran", "nidorina", "nidoqueen", "nidoran", "nidorino", "nidoking", "clefairy",
+    "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat",
+    "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth",
+    "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey",
+    "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath",
+    "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout",
+    "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler",
+    "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton",
+    "farfetch'd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder",
+    "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby",
+    "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak",
+    "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon",
+    "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking",
+    "staryu", "starmie", "mr. mime", "scyther", "jynx", "electabuzz", "magmar",
+    "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee",
+    "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto",
+    "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres",
+    "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
+
 var userGuess = [];
-var guessLeft = 6;
+var guessLeft = 12;
 var word = words[0];
 var win = 0;
 var loss = 0;
 var underscores = underscore(word);
 var guess;
-var alphabet = "abcdefghijklmnopqrstuvwxyz";
+var alphabet = "abcdefghijklmnopqrstuvwxyz.'";
 var wordsIndex = 0;
+
+
+function randomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
 
 function nextWord() {
     if (wordsIndex < words.length) {
         return words[wordsIndex];
-    }
-    else {
+    } else {
         wordsIndex = 0;
         return words[wordsIndex];
     }
@@ -34,7 +60,7 @@ function winner() {
     document.getElementById("word").textContent = underscores.join(' ');
     win++;
     document.getElementById("wins").textContent = win;
-    guessLeft = 6;
+    guessLeft = 12;
     document.getElementById("guess-left").textContent = guessLeft;
     userGuess = [];
     document.getElementById("guesses").textContent = userGuess;
@@ -47,13 +73,13 @@ function loser() {
     document.getElementById("word").textContent = underscores.join(' ');
     loss++;
     document.getElementById("losses").textContent = loss;
-    guessLeft = 6;
+    guessLeft = 12;
     document.getElementById("guess-left").textContent = guessLeft;
     userGuess = [];
     document.getElementById("guesses").textContent = userGuess;
 }
 
-function loseGuess() {
+function loseguess() {
     guessLeft--;
     document.getElementById("guess-left").textContent = guessLeft;
     return guessLeft;
@@ -90,7 +116,7 @@ document.onkeyup = function (event) {
                 userGuess.push(guess);
                 document.getElementById("guesses").textContent = userGuess;
                 document.getElementById("word").textContent = underscores.join(' ');
-                loseGuess();
+                loseguess();
                 if (guessLeft === 0) {
                     loser();
                 }
