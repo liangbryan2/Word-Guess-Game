@@ -21,4 +21,4 @@ body {
          url('../fonts/pokemon-font.woff') format('woff'), /* Pretty Modern Browsers */
          url('../fonts/pokemon-font.ttf')  format('truetype') /* Safari, Android, iOS */
     /* There is no SVG version of this font due to support being dropped in SVG 2 */
-  }
+}
