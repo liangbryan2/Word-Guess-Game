@@ -9,7 +9,9 @@ body {
     background: none;
 }
 
-
+.content {
+    padding-left: 100px;
+}
 
 @font-face {
     font-family: 'pokemon-font';

@@ -10,25 +10,25 @@ var words = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "ch
     "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout",
     "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler",
     "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton",
-    "farfetch'd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder",
+    "farfetchd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder",
     "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby",
     "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak",
     "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon",
     "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking",
-    "staryu", "starmie", "mr. mime", "scyther", "jynx", "electabuzz", "magmar",
+    "staryu", "starmie", "mrmime", "scyther", "jynx", "electabuzz", "magmar",
     "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee",
     "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto",
     "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres",
     "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
 
 var userGuess = [];
-var guessLeft = 12;
-var word = words[0];
+var guessLeft = 8;
+var word = randomWord();
 var win = 0;
 var loss = 0;
 var underscores = underscore(word);
 var guess;
-var alphabet = "abcdefghijklmnopqrstuvwxyz.'";
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var wordsIndex = 0;
 
 
@@ -54,32 +54,30 @@ function underscore(word) {
 }
 
 function winner() {
-    wordsIndex++;
-    word = nextWord();
+    word = randomWord();
     underscore(word);
     document.getElementById("word").textContent = underscores.join(' ');
     win++;
     document.getElementById("wins").textContent = win;
-    guessLeft = 12;
+    guessLeft = 8;
     document.getElementById("guess-left").textContent = guessLeft;
     userGuess = [];
     document.getElementById("guesses").textContent = userGuess;
 }
 
 function loser() {
-    wordsIndex++;
-    word = nextWord();
+    word = randomWord();
     underscore(word);
     document.getElementById("word").textContent = underscores.join(' ');
     loss++;
     document.getElementById("losses").textContent = loss;
-    guessLeft = 12;
+    guessLeft = 8;
     document.getElementById("guess-left").textContent = guessLeft;
     userGuess = [];
     document.getElementById("guesses").textContent = userGuess;
 }
 
-function loseguess() {
+function loseGuess() {
     guessLeft--;
     document.getElementById("guess-left").textContent = guessLeft;
     return guessLeft;
@@ -101,7 +99,7 @@ function correctLetter(letter, word) {
 
 document.onkeyup = function (event) {
     document.getElementById("word").textContent = underscores.join(' ');
-    var guess = event.key;
+    var guess = event.key.toLowerCase();
     if (alphabet.includes(guess)) {
         if (word.includes(guess)) {
             correctLetter(guess, word);
@@ -116,7 +114,7 @@ document.onkeyup = function (event) {
                 userGuess.push(guess);
                 document.getElementById("guesses").textContent = userGuess;
                 document.getElementById("word").textContent = underscores.join(' ');
-                loseguess();
+                loseGuess();
                 if (guessLeft === 0) {
                     loser();
                 }
