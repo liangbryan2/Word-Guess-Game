@@ -22,3 +22,17 @@ body {
          url('../fonts/pokemon-font.ttf')  format('truetype') /* Safari, Android, iOS */
     /* There is no SVG version of this font due to support being dropped in SVG 2 */
 }
+
+@media screen and (max-width: 1440px) {
+    h4 {
+        font-size: 18px;
+    }
+
+    .display-4 {
+        font-size: 40px;
+    }
+
+    .jumbotron {
+        padding: 30px;
+    }
+}
