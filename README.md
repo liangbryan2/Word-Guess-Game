@@ -53,6 +53,10 @@ function winner() {
 * CSS
 * Bootstrap
 
+## Learning Points
+
+The goal of this project was to learn the basics of Javascript. From variable declartion to creating functions. The game is based on the onkeyup event in Javascript and I had to create different functions that would do specific things based on what key was pressed. Another big part of this project was learning how to modify the DOM in the Javascript functions. 
+
 ## Author
 
 **Bryan Liang** - [My Github](https://github.com/liangbryan2)
