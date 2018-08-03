@@ -30,7 +30,7 @@ var underscores = underscore(word);
 var guess;
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 var wordsIndex = 0;
-
+var previousWord = "";
 
 function randomWord() {
     return words[Math.floor(Math.random() * words.length)];
@@ -54,6 +54,8 @@ function underscore(word) {
 }
 
 function winner() {
+    previousWord = word;
+    document.getElementById("previous-word").textContent = previousWord;
     word = randomWord();
     underscore(word);
     document.getElementById("word").textContent = underscores.join(' ');
@@ -66,6 +68,8 @@ function winner() {
 }
 
 function loser() {
+    previousWord = word;
+    document.getElementById("previous-word").textContent = previousWord;
     word = randomWord();
     underscore(word);
     document.getElementById("word").textContent = underscores.join(' ');
